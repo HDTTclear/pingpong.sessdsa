@@ -126,14 +126,17 @@ def main():
             if m is not None:
                 # 不为空，则拿到了一个正确的文件
                 logname = name[:-4]  # 去除.dat后缀
-                break
-        else:
+                namelist.append(logname)
+        #else:
             # 没找到，说明本目录下没有这个测试文件
-            raise NameError("No Test File in this directory.")
-    
-    #读出log
-    log = readlog(logname)
+         #   raise NameError("No Test File in this directory.")
 
+    # 读出log
+    for i in range(len(namelist)):
+        print('第',i,'个',namelist[i])
+    ssssss=int(input('请输入你想看的对战的序号，从0开始，到%d结束\n' %(len(namelist)-1)))#序号
+    logname=namelist[ssssss]
+    log = readlog(logname)
     #pygame初始化
     pygame.init()
     screen = pygame.display.set_mode(s_size)
